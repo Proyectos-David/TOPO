@@ -25,45 +25,14 @@
   \left\{#1\,\SetCommandMidDelimiter\,#2\right\}
 }
 
-\NewDocumentCommand\ran{}%
-{
-  \text{ran}\;
-}
-
-\NewDocumentCommand\dom{}%
-{
-  \text{dom}\;
-}
-
-\NewDocumentCommand\diam{}%
-{
-  \text{diam}\;
-}
-
-\NewDocumentCommand\Int{D(){dsa}}%
-{
-  \textbf{int}\left(#1\right)
-}
-
-\NewDocumentCommand\Adh{D(){dsa}}%
-{
-  \textbf{adh}\left(#1\right)
-}
-
-\NewDocumentCommand\funcset{ m m }%
-{
-  \prescript{#1}{}{#2}
-}
-
-\NewDocumentCommand\Nhd{ m m }%
-{
-  N_{#1}\left({#2}\right)
-}
-
-\WithSuffix\NewDocumentCommand\Nhd*{ m m }%
-{
-  N_{#1}^*\left({#2}\right)
-}
+\DeclareMathOperator{\ran}{\mathrm{\mathbf{ran}}}
+\DeclareMathOperator{\img}{\mathrm{\mathbf{img}}}
+\DeclareMathOperator{\dom}{\mathrm{\mathbf{dom}}}
+\DeclareMathOperator{\gen}{\mathrm{\mathbf{gen}}}
+\DeclareMathOperator{\diam}{\mathrm{\mathbf{diam}}}
+\DeclareMathOperator{\Int}{\mathrm{\mathbf{int}}}
+\DeclareMathOperator{\Adh}{\mathrm{\mathbf{adh}}}
+\DeclareMathOperator{\sop}{\mathrm{\mathbf{sop}}}
 
 \NewDocumentCommand\uconv{o}%
 {
