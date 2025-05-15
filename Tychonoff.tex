@@ -1,0 +1,65 @@
+\begin{Lema}
+  Sean $\{X_\alpha\}_{\alpha\in J}$ una colección de espacios topológicos, $X=\prod_{\alpha\in J}X_\alpha$,
+  $(x_\alpha)_{\alpha\in J}\in X$ y $A\subseteq X$. $(x_\alpha)_{\alpha\in J}\in\Adh(A)$ si y solo si
+  para todo $I\subseteq J$ finito, 
+  \[\pi_I((x_\alpha)_{\alpha\in J})=(x_\alpha)_{\alpha\in I}\in \Adh(\pi_I(A))\]
+  Tomando este último como subconjunto de $\prod_{\alpha\in I}X_\alpha$ con la topología producto.
+\end{Lema}
+\begin{Demo}
+  la primera implicación es trivial.
+  Para la otra implicación, basta con demostrar que toda vecindad básica de $(x_\alpha)_{\alpha\in J}$
+  interseca con $A$. Sea $U=\prod_{\alpha\in J}U_\alpha$ un abierto básico al cual pertenece
+  $(x_\alpha)_{\alpha\in J}$ y $I\subseteq J$ el conjunto de índices para los que
+  $\alpha\in I$ implica que $U_\alpha\neq X_\alpha$. Como $I$ es finito, por hipótesis,
+  $\pi_I((x_\alpha)_{\alpha\in J})\in\Adh(\pi_I(A))$ luego
+  \[\prod_{\alpha\in I} U_\alpha\cap \pi_I(A)\neq\varnothing\]
+  Como $\alpha\not\in I$ implica que $U_\alpha=X_\alpha$, entonces trivialmente
+  \[U\cap A\neq \varnothing\]
+\end{Demo}
+
+\begin{Teo}
+  Sea $\{X_\alpha\}_{\alpha<\kappa}$ una colección de compactos indexados por un ordinal
+  $\kappa$. El espacio $X=\prod_{\alpha<\kappa}X_\alpha$ es compacto bajo la topología
+  producto.
+\end{Teo}
+\begin{Demo}
+  La demostración se realizará por inducción transfinita. Para $\gamma\leq\kappa$ se denotará
+  $X^\gamma=\left(\prod_{\alpha<\gamma}X_\alpha\right)\times Y$ con lo que $X^0=Y$. Para $\beta<\gamma$ se define
+  \[\pi_\beta^\gamma:X^\gamma\longrightarrow X^\beta\]
+  por $(y,(x_\alpha)_{\alpha<\gamma})\longmapsto(y,(x_\alpha)_{\alpha<\beta})$. Sea
+  $K\subseteq X^\kappa$ cerrado. Se denotará $K_\beta=\Adh\left(\pi_\beta^\kappa(K)\right)$,
+  con lo que $K_\kappa=K$ y $K_0=\Adh\left(\pi_0^\beta(K)\right)$ sería la segunda
+  proyección en $X\times Y$. Basta con demostrar justamente que $K_0=\pi_0^\beta(K)$.
+
+  Se demuestra que, dado $x_0\in K_0$, para todo $\beta<\kappa$, existe $x_\beta\in X^\gamma$ tal que
+  para todo $\gamma$ con $\beta<\gamma<\kappa$, $\pi_\beta^\gamma(x_\gamma)=x_\beta$.(¿Qué es $x_\gamma$ específicamente?)
+  En particular, $\pi_0^\beta(x_\beta)=x_0$.
+
+  El caso base es trivial ($\beta=0$). Si $\kappa$ es sucesor de algún $\beta$, entonces
+  \[\pi_\beta^\kappa:X_\beta\times X^\beta\longrightarrow X^\beta\]
+  (¿por qué la misma notación?) es cerrada ya que $X^\beta$ es compacto, luego $\pi_\beta^\kappa(K)=K_\beta$
+  y como $K$ es cerrado, existe $x_\kappa\in K$ con $\pi_\beta^\kappa(x_\kappa)=x_\beta$ con lo que
+  \[\pi_0^\kappa(x_\kappa) = \left(\pi_0^\beta\circ\pi_\beta^\kappa\right)(x_\kappa)=x_0\]
+
+  Si $\kappa$ es un ordinal límite (no es sucesor), entonces se puede considerar $X^\kappa$ como
+  el límite de los espacios $X^\beta$ con las proyecciones $\pi_\beta^\gamma$ entre si.
+  Debido a esto, todo elemento $(x_\beta)_{\beta<\kappa}$ define un elemento $x_\kappa\in X^\kappa$.
+  Basta con demostrar que $x_\kappa\in K$. Por el lema anterior, basta con considerar
+  cualquier colección finita $F$ de ordinales menores a $\kappa$. Existe un ordinal
+  $\beta$ el cual es mayor a todos los ordinales en $F$, con lo que
+  \begin{longderivation}
+      & \pi_F(x_\kappa)\\
+    =\\
+      & (\pi_F\beta\circ\pi_\beta^\kappa)(x_\kappa)\\
+    =\\
+      & \pi_F^\beta(x_\beta)\\
+    \in\\
+      & \pi_F^\beta(K_\beta)\\
+    =\\
+      & \pi_F^\beta(\Adh(\pi_\beta^\kappa(K)))\\
+    \subseteq\\
+      & \Adh((\pi_F^\beta\circ\pi_\beta^\kappa(K)))\\
+    =\\
+      & \Adh(\pi_F(K))
+  \end{longderivation}
+\end{Demo}

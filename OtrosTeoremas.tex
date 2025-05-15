@@ -69,15 +69,25 @@
   $y\in\Adh(\pi_2(C))$, este conjunto es no vacío. En efecto, existe $p\in W\cap\pi_2(C)$,
   luego por sobreyectividad de la segunda proyección, existe $x\in [a,b]$ tal que
   $x\times p\in C$, con lo que $x\in A_W$. Evidentemente $A_W\subseteq[a,b]$,
-  luego es acotado superiormente por $b$ y en consecuencia, $a_W=\sup A_W\in [a,b]$.
+  luego es acotado superiormente por $b$ y en consecuencia, $a_W=\sup A_W\in [a,b]$ existe.
   Análogamente, el conjunto $\set{a_W}{W\in\mathcal{V}(y)}$ está contenido en $[a,b]$
   por lo anterior y $\alpha=\inf\set{a_W}{W\in\mathcal{V}(y)}\in[a,b]$.
 
-  Sean $W\in\mathcal{V}(y)$ y $V$ una vecindad de $\alpha$ en $X$. Por lo anterior, $V\cap[a,b]$
-  es una vecindad de $\alpha$ en $[a,b]$ y por definición de $\alpha$, existe
-  una vecindad $W_1$ de $y$ tal que $\alpha\leq a_{W_1}\in V$ (¿Esto se puede si $X\neq \R$?).
-  por propiedades del supremo, $a_{W_1\cap W}\leq a_{W_1}$
-  (¿Hace falta que $W\cap W_1\neq\varnothing$?) con lo que
-  $a_{W_1\cap W}\in V$ y existen $x\in V,w\in W_1\cap W\subseteq W$ tales que $x\times w\in C$,
-  luego $\alpha\times y\in\Adh(C)=C$, es decir $y\in\pi_2(C)$.
+  Se quiere ver que $\alpha\times y\in\Adh(C)$.
+
+  Sean $V\cap [a,b]$ una vecindad de $\alpha$ en $[a,b]$ con $\alpha \neq \sup(V)$
+  y $W$ una vecindad de $y$. Como $\alpha \neq \sup(V)$ entonces existe $W_1 \in \mathcal{V}(y)$
+  tal que $\alpha \leq a_{W_1} < sup(V)$. Nótese que $a_{W_1\cap W}\leq a_{W_1}$ para todo $W$.
+
+  Si $\alpha < a_{W_1\cap W}$ entonces $\alpha$ no es una cota superior de $A_{W_1\cap W}$,
+  luego existe $x\in A_{W_1\cap W}$ tal que $\alpha < x \leq a_{W_1\cap W}$. Es claro que 
+  $x \in V$ y que existe $w \in W_1\cap W \subseteq W$ tal que $x\times w \in K$. 
+  Además $x\times w \in (V\times W)\cap K$. 
+  Si $\alpha = a_{W_1\cap W}$, entonces para toda vecindad $U$ de $\alpha$ en $X$, 
+  $U\cap A_{W_1\cap W} \neq \varnothing$ para todo $W \in \mathcal{V}(y)$. Entonces existen
+  $x \in U$ y $w\in W_1\cap W$ tales que $x\times w \in K$ por lo que 
+  $(V\times (W_1\cap W))\cap K\neq\varnothing$. Así $\alpha \times y \in \Adh(C)=C$.
+
+  Nótese que en caso de que $X$ sea bien ordenado, entonces $\alpha$ es un mínimo. Entonces 
+  existe $W \in \mathcal{V}(y)$ tal que $\alpha = a_W$, y se sigue el procedimiento anterior.
 \end{Demo}
