@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{analysis} % Sintaxis del análisis
+\usepackage{logicDG}  % Para lógica calculatoria
+\usepackage{upgreek}  % Mejores letras griegas
+\usepackage{enumitem} % Listas
+\usepackage{amsfonts} % Letras Caligráficas
+\usepackage{mathrsfs} % Teoremas
+\usepackage{amsthm}   % Teoremas
+\usepackage{thmtools} % Teoremas
+\usepackage[hidelinks]{hyperref}  % Links a referencias
+\usepackage[T1]{fontenc}  % Fuente
+\usepackage{lmodern}  % Fuente
+\usepackage[spanish,es-noquoting,es-lcroman,es-noshorthands]{babel}
+\usepackage[explicit,pagestyles]{titlesec}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage[sorting=none,
+style=phys,
+maxnames=999,
+biblabel=brackets,
+pageranges=false,
+chaptertitle=false,
+giveninits=false]{biblatex}
+
+%%% Página
+\geometry{
+  left=2cm,
+  right=2cm,
+  bottom=4cm,
+  a4paper
+}
+\newpagestyle{main}[]
+{
+  \sethead[\thepage][][\itshape\sectiontitle]
+  {\itshape\sectiontitle}{}{\thepage}
+  \headrule
+}
+\pagestyle{main}
+\titleformat{\section}[block]
+  {\Large\itshape\bfseries}
+  {}
+  {0pt}
+  {
+    \thesection\hspace{15pt}#1
+  }
+\titleformat{name=\section,numberless}[display]
+  {\Large\itshape\bfseries}
+  {}
+  {0pt}
+  {
+      #1
+  }
+
+\titleformat{\subsection}[block]
+  {\large\itshape\bfseries}
+  {}
+  {0pt}
+  {
+    \thesubsection\hspace{10pt}#1
+  }
+\titleformat{name=\subsection,numberless}[display]
+  {\large\itshape\bfseries}
+  {}
+  {0pt}
+  {
+      #1
+  }
+\everymath{\displaystyle}
+\RenewDocumentCommand{\dfrac}{mm}{\frac{\displaystyle#1}{\displaystyle#2}}
+\doublespacing
+\hyphenpenalty=10000
+\relpenalty=10000
+\binoppenalty=10000
+\interfootnotelinepenalty=10000
+
+
+%%%% Teoremas, Definiciones y demás
+\declaretheoremstyle[
+  spaceabove=10pt,
+  spacebelow=20pt,
+  bodyfont={\normalfont},
+  notefont={\normalfont},
+  notebraces={(}{)},
+  headpunct={:},
+  headfont={\bfseries},
+  ]{definicion}
+  
+\declaretheoremstyle[
+    headpunct={:},
+    headfont={\bfseries},
+    bodyfont={\normalfont},
+    qed={\qedsymbol}
+]{Proof}
+
+\declaretheorem[style=definicion,name=Definición]{Def}
+\declaretheorem[style=definicion,name=Teorema,numberlike=Def]{Teo}
+\declaretheorem[style=definicion,name=Corolario,numberlike=Def]{Coro}
+\declaretheorem[style=Proof, numbered=no, name=Demostración]{Demo}
+\declaretheorem[style=definicion, numberlike=Def, name=Lema]{Lema}
+\declaretheorem[style=definicion,name=Ejemplo,numberlike=Def]{Ej}
+\declaretheorem[style=definicion,name=Nota,numberlike=Def]{nota}
+
+%% Listas
+\setlist[enumerate]{label=(\roman*),ref=(\roman*),wide=0pt,listparindent=\parindent}
+\setlist[itemize]{label=\textbullet,wide=0pt}
+
+%%% Cambios de letras y simbolos
+\renewcommand{\epsilon}{\upvarepsilon}
+
+%%% Autor y Fecha
+\author{David Gómez, Laura Rincón}
+\date{\today}
+\title{La Caracterización de Kuratowski-Mrówa Para Conjuntos Compactos}
+\begin{document}
+\maketitle
+\input{Intro}
+\input{TeoremaPrincipal}
+\input{OtrosTeoremas.tex}
+\end{document}

@@ -1,0 +1,60 @@
+\begin{Teo}[Kuratowski-Mrówa]
+  Un espacio topológico $X$ es compacto si y solo si
+  para todo espacio topológico $Y$, la segunda proyección
+  $\pi_2:X\times Y\longrightarrow Y$ es cerrada.
+\end{Teo}
+
+Antes de demostrar el teorema se presentan un par de lemas los cuales
+permiten entender mejor la relación de este enunciado con la definición
+usual de compacidad.
+
+\begin{Lema}
+  Sean $X,Y$, espacios topológicos y $f:X\longrightarrow Y$.
+  $f$ es cerrada si y solo si, para todo $y\in Y$, $U\subseteq X$
+  tal que $f^{-1}(\{y\})\subseteq U$, existe una vecindad $V$ de $y$
+  tal que $f^{-1}(V)\subseteq U$.
+\end{Lema}
+\begin{Demo}
+  \begin{enumerate}
+    \item Supóngase que $f$ es cerrada y sean $y\in Y$, $U\subseteq X$ tal que $f^{-1}(\{y\})\subseteq U$.
+    Entones $X-U$ es cerrado y $f(X-U)$ también. Se define $V=Y-f(X-U)$ que es abierto en $Y$ y además
+    $y\in V$, pues de no ser el caso, $y\in f(X-U)\cap f(U)=\varnothing$.
+
+    Se afirma que $f^{-1}(V)\subseteq U$: sea $p\in f^{-1}(V)$, entonces $f(p)\not\in f(X-U)$ y
+    $p\not\in X-U$, es decir $p\in U$.
+    \item Supóngase que $f$ satisface la hipótesis del recíproco y sean $C\subseteq X$ cerrado, $y\not\in f(C)$.
+    Como $C$ es cerrado, entonces $X-U$ es un abierto el cual contiene a $f^{-1}(\{y\})$ y por hipótesis,
+    se cuenta con una vecindad $V$ de $y$ tal que $f^{-1}(V)\subseteq X-C$, con lo que
+    $V\cap f(C)=\varnothing$ y $y\in\Int(Y-f(C))$. Así, $f(C)$ es cerrado.
+  \end{enumerate}
+\end{Demo}
+
+\begin{Lema}(Lema del Tubo)
+  Sean $X,Y$ espacios topológicos, $y\in Y$ y $W\subseteq X\times Y$ abierto tal que
+  $X\times\{y\}\subseteq W$. Si $X$ es compacto entonces existe una vecindad $V$ de $y$ tal
+  que $X\times V\subseteq W$.
+\end{Lema}
+\begin{Demo}
+  Dado que $X\times\{y\}$ es homeomorfo a $X$, el cual es compacto, se cuenta con
+  una cantidad finita de abiertos básicos $U_1\times E_1,\dots,U_n\times E_n\subseteq W$
+  los cuales cubren a $X\times\{y\}$. Sin pérdida de generalidad supóngase que
+  cada uno de estos abiertos interseca al conjunto. Se define
+  $V=\bigcap_{i=1}^n E_i$ que es abierto en $Y$ y $y\in V$. Sea $(x,z)\in X\times V$.
+  Entonces para algún $i\in\{1,\dots,n\}$, $(x,y)\in U_i\times E_i$ y como
+  $z\in\bigcap_{i=1}^n E_i$, entonces $(x,z)\in U_i\times E_i$. Así,
+  $X\times W\subseteq\bigcup_{i=1}^nU_i\times E_i\subseteq W$.
+\end{Demo}
+
+Aplicando el primer lema, el enunciado el teorema presentado resulta equivalente
+al siguiente
+
+\begin{Teo}[Kuratowski-Mrówa modificado]
+  Un espacio topológico $X$ es compacto si y solo si
+  para todo espacio topológico $Y$, se satisface lo siguiente: para todo $y\in Y$,
+  $W\subseteq X\times Y$ abierto tal que $X\times\{y\}\subseteq W$, existe una vecindad
+  $V$ de $y$ la cual cumple que $X\times V\subseteq U$.
+\end{Teo}
+\begin{Demo}
+  La primera implicación es el lema del tubo.
+\end{Demo}
+

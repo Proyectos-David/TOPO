@@ -1,0 +1,115 @@
+%%Identification
+%%The package identifies itself and the LaTeX version needed
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{analysis}[2024/03/01 Symbols of analysis]
+
+%% Required packages and preliminary definitions
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{dsfont}
+\RequirePackage{mathrsfs}
+\RequirePackage{suffix}
+\newcommand{\SetCommandMidDelimiter}{\middle|}
+
+%% options passed to the package
+\DeclareOption{dot}{
+  \renewcommand{\SetCommandMidDelimiter}{:}
+}
+\DeclareOption*{\PackageWarning{analysis}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+%% Body of the package
+
+\NewDocumentCommand\set{m m}%
+{
+  \left\{#1\,\SetCommandMidDelimiter\,#2\right\}
+}
+
+\NewDocumentCommand\ran{}%
+{
+  \text{ran}\;
+}
+
+\NewDocumentCommand\dom{}%
+{
+  \text{dom}\;
+}
+
+\NewDocumentCommand\diam{}%
+{
+  \text{diam}\;
+}
+
+\NewDocumentCommand\Int{D(){dsa}}%
+{
+  \textbf{int}\left(#1\right)
+}
+
+\NewDocumentCommand\Adh{D(){dsa}}%
+{
+  \textbf{adh}\left(#1\right)
+}
+
+\NewDocumentCommand\funcset{ m m }%
+{
+  \prescript{#1}{}{#2}
+}
+
+\NewDocumentCommand\Nhd{ m m }%
+{
+  N_{#1}\left({#2}\right)
+}
+
+\WithSuffix\NewDocumentCommand\Nhd*{ m m }%
+{
+  N_{#1}^*\left({#2}\right)
+}
+
+\NewDocumentCommand\uconv{o}%
+{
+  \IfNoValueTF{#1}
+  {
+    \overset{u}{\longrightarrow}
+  }{
+    \overset{u}{\underset{#1}{\longrightarrow}}
+  }
+}
+
+\NewDocumentCommand\N{}{\mathbb{N}}
+\NewDocumentCommand\R{}{\mathds{R}}
+\NewDocumentCommand\C{}{\mathds{C}}
+\NewDocumentCommand\Z{}{\mathds{Z}}
+
+\makeatletter
+\NewDocumentCommand{\lowerint}{}{\mathop{}\mathpalette\lowerint@\relax\!\int}
+\NewDocumentCommand{\upperint}{}{\mathop{}\mathpalette\upperint@\relax\!\int}
+\newcommand{\lowerint@}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\int$}%
+  \lowup@{l}{\underline}{#1}%
+  \endgroup
+}
+\newcommand{\upperint@}[2]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\int$}%
+  \lowup@{r}{\overline}{#1}%
+  \endgroup
+}
+\newcommand{\lowup@}[3]{%
+  % #1 = l (lower) or r (upper)
+  % #2 = \underline (lower) or \overline (upper)
+  % #3 = math style
+  \rlap{%
+    \hspace{0.05\wd\z@}%
+    \makebox[0.9\wd\z@][#1]{%
+      $\m@th#2{%
+        \hspace{0.4\wd\z@}%
+        \ifx#3\displaystyle\else\hspace{0.1\wd\z@}\fi
+        \vphantom{\copy\z@}%
+      }$%
+    }%
+    \hspace{0.05\wd\z@}%
+  }%
+}
+\makeatother
+

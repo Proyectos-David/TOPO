@@ -1,0 +1,109 @@
+%%Identification
+%%The package identifies itself and the LaTeX version needed
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{logicDG}[2023/04/16 Logic package]
+
+
+%% Required packages and preliminary definitions
+\RequirePackage{mathtools}
+\RequirePackage{nicematrix}
+\RequirePackage{longtable}
+\newcommand{\WhyCommandLeftDelimiter}{\left<}
+\newcommand{\WhyCommandRightDelimiter}{\right>}
+\newcommand{\WhyDefaultConnector}{\equiv}
+
+%% options passed to the package
+\DeclareOption{round}{
+  \renewcommand{\WhyCommandLeftDelimiter}{\left(}
+  \renewcommand{\WhyCommandRightDelimiter}{\right)}
+}
+\DeclareOption{square}{
+  \renewcommand{\WhyCommandLeftDelimiter}{\left[}
+  \renewcommand{\WhyCommandRightDelimiter}{\right]}
+}
+\DeclareOption{arrows}{
+  \renewcommand{\WhyDefaultConnector}{\Leftrightarrow}
+}
+\DeclareOption*{\PackageWarning{logicDG}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+%% Body of the package
+
+\NewDocumentCommand\To{}{\Rightarrow}
+
+\NewDocumentCommand\Gets{}{\Leftarrow}
+
+\NewDocumentCommand\Forall{m o m}%
+{
+  \IfNoValueTF{#2}
+  {
+    \left(\forall #1 \,\middle|:\, #3 \right)
+  }
+  {
+    \left(\forall #1 \,\middle|\, #2 \,:\, #3\right)
+  }
+}
+
+\NewDocumentCommand\Exists{m o m}%
+{
+  \IfNoValueTF{#2}
+  {
+    \left(\exists #1 \,\middle|:\, #3 \right)
+  }
+  {
+    \left(\exists #1 \,\middle|\, #2 \,:\, #3\right)
+  }
+}
+
+\NewDocumentCommand\why{O{\WhyDefaultConnector}m}%
+{
+  #1 & \quad\WhyCommandLeftDelimiter\;\text{{#2}}\;\WhyCommandRightDelimiter
+}
+
+\NewDocumentCommand\wff{O{0pt} m}%
+  	{ & \hspace{#1}\begin{matrix*}[l] #2\end{matrix*}}
+
+\NewDocumentCommand\theo{O{}mm}%
+{
+  #1 \vdash_{\text{#2}} #3 
+}
+
+\NewDocumentEnvironment{derivation}{D<>{1.2} O{0pt}}{
+  % begin
+  \RenewDocumentCommand{\arraystretch}{}{#1}
+  \setlength{\arraycolsep}{#2}
+  \begin{matrix*}[l]
+}{
+  % end
+  \end{matrix*}
+}
+\newcolumntype{L}{>{$}l<{$}}
+
+\NewDocumentEnvironment{longderivation}{D<>{1.2} O{0pt}}{
+  % begin
+  \RenewDocumentCommand{\arraystretch}{}{#1}
+  \setlength{\tabcolsep}{#2}
+  \begin{longtable}{LL}
+}{
+  % end
+  \end{longtable}
+}
+
+\newcounter{row}
+\newcommand{\contspf}{0}
+
+\newlength{\twocolC}
+\setlength{\twocolC}{3pt}
+
+
+\NewDocumentEnvironment{twocol}{D<>{1.2} D(){3pt} O{0}}{
+  % begin
+  \setcounter{row}{\number\numexpr#3 - 1\relax}
+  \RenewDocumentCommand{\arraystretch}{}{#1}
+  \setlength{\tabcolsep}{#2}
+  \begin{tabular}{>{\stepcounter{row}\therow.\hspace{\twocolC}} >{$}l<{$} l }
+}{
+  %end
+  \end{tabular}
+}
+
