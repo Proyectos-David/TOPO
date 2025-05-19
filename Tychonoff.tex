@@ -23,42 +23,66 @@
   producto.
 \end{Teo}
 \begin{Demo}
-  La demostración se realizará por inducción transfinita. Para $\gamma\leq\kappa$ se denotará
-  $X^\gamma=\left(\prod_{\alpha<\gamma}X_\alpha\right)\times Y$ con lo que $X^0=Y$. Para $\beta<\gamma$ se define
+  La demostración se realizará por inducción transfinita. El caso base,
+  $\kappa=0$ es trivial. Antes de continuar con el paso inductivo,
+  se introduce una notación que será de utilidad:
+  
+  Para $\gamma\leq\kappa$ se denotará
+  $X^\gamma=\left(\prod_{\alpha<\gamma}X_\alpha\right)\times Y$. Se toma la convención de que
+  $X^0=Y$.
+  Para $\beta<\gamma$ se define
   \[\pi_\beta^\gamma:X^\gamma\longrightarrow X^\beta\]
   por $(y,(x_\alpha)_{\alpha<\gamma})\longmapsto(y,(x_\alpha)_{\alpha<\beta})$. Sea
   $K\subseteq X^\kappa$ cerrado. Se denotará $K_\beta=\Adh\left(\pi_\beta^\kappa(K)\right)$,
   con lo que $K_\kappa=K$ y $K_0=\Adh\left(\pi_0^\beta(K)\right)$ sería la segunda
   proyección en $X\times Y$. Basta con demostrar justamente que $K_0=\pi_0^\beta(K)$.
 
-  Se demuestra que, dado $x_0\in K_0$, para todo $\beta<\kappa$, existe $x_\beta\in X^\gamma$ tal que
-  para todo $\gamma$ con $\beta<\gamma<\kappa$, $\pi_\beta^\gamma(x_\gamma)=x_\beta$.(¿Qué es $x_\gamma$ específicamente?)
-  En particular, $\pi_0^\beta(x_\beta)=x_0$.
+  Para la hipótesis de inducción, se va a suponer que, para todo $\beta<\kappa$,
+  la segunda proyección
+  \[\pi_2\colon \left(\prod_{\alpha<\beta}X_\alpha\right)\times Y\longrightarrow Y\]
+  es cerrada. Esto es equivalente a que la función $\pi_0^\beta$ sea cerrada.
+  Es decir, dado $x_0\in K_0$, existe $x_\beta\in K_\beta$ tal que
+  $\pi_0^\beta(x_\beta)=x_0$.
 
-  El caso base es trivial ($\beta=0$). Si $\kappa$ es sucesor de algún $\beta$, entonces
-  \[\pi_\beta^\kappa:X_\beta\times X^\beta\longrightarrow X^\beta\]
-  (¿por qué la misma notación?) es cerrada ya que $X^\beta$ es compacto, luego $\pi_\beta^\kappa(K)=K_\beta$
-  y como $K$ es cerrado, existe $x_\kappa\in K$ con $\pi_\beta^\kappa(x_\kappa)=x_\beta$ con lo que
-  \[\pi_0^\kappa(x_\kappa) = \left(\pi_0^\beta\circ\pi_\beta^\kappa\right)(x_\kappa)=x_0\]
+  Si $\kappa$ es un sucesor ($\kappa=\beta+1)$, entonces por hipótesis, la proyección
+  \[\pi_2\colon X_\beta\times X^\beta\longrightarrow X^\beta\]
+  es cerrada. Esto es equivalente a que la función $\pi_\beta^\kappa$ es cerrada.
+ 
+  \begin{longderivation}<.8>
+      & K_\beta=\pi_\beta^\kappa(K)\\
+    \To\\
+      & \pi_0^\beta(K_\beta)=(\pi_0^\beta\circ\pi_\beta^\kappa)(K)\\
+    \equiv\\
+      & K_0 = \pi_0^\kappa(K)
+  \end{longderivation}
 
-  Si $\kappa$ es un ordinal límite (no es sucesor), entonces se puede considerar $X^\kappa$ como
-  el límite de los espacios $X^\beta$ con las proyecciones $\pi_\beta^\gamma$ entre si.
-  Debido a esto, todo elemento $(x_\beta)_{\beta<\kappa}$ define un elemento $x_\kappa\in X^\kappa$.
-  Basta con demostrar que $x_\kappa\in K$. Por el lema anterior, basta con considerar
-  cualquier colección finita $F$ de ordinales menores a $\kappa$. Existe un ordinal
-  $\beta$ el cual es mayor a todos los ordinales en $F$, con lo que
-  \begin{longderivation}
+  Si $\kappa$ es un ordinal límite (no es un sucesor), se considera
+  el sistema inverso de espacios $\set{(X^\gamma,\pi_\beta^\gamma)}{\kappa}$.
+  Se comprueba fácilmente que este es un sistema inverso pues las
+  funciones dadas son efectivamente continuas y para $\gamma>\beta>\mu$,
+  \[\pi_\mu^\beta\circ\pi_\beta^\gamma=\pi_\mu^\gamma\]
+  Con esto, el espacio $X^\kappa$ es justamente el límite inverso
+  de este sistema. La razón está justamente en el comportamiendo
+  de las funciones dadas, lo cual fue descrito al momento de introducirlas.
+
+  Debido a esto, para todo $\beta<\kappa$ cualquier elemento de la forma
+  $(x_\alpha)_{\alpha<\beta}$ define un elemento $x_\kappa\in X^\kappa$.
+
+  Por hipótesis, basta con demostrar que los $x_\kappa$ definidos
+  por elementos $x_\beta\in K_\beta$, están en $K$. Por el lema anterior,
+  basta con considerar $F$ una colección finita de ordinales menores a $\kappa$.
+  \begin{longderivation}<.8>
       & \pi_F(x_\kappa)\\
     =\\
-      & (\pi_F\beta\circ\pi_\beta^\kappa)(x_\kappa)\\
+      & (\pi_F^\beta\circ\pi_\beta^\kappa)(x_\kappa)\\
     =\\
       & \pi_F^\beta(x_\beta)\\
     \in\\
       & \pi_F^\beta(K_\beta)\\
     =\\
-      & \pi_F^\beta(\Adh(\pi_\beta^\kappa(K)))\\
+      & \pi_F(\Adh(\pi_\beta^\kappa(K)))\\
     \subseteq\\
-      & \Adh((\pi_F^\beta\circ\pi_\beta^\kappa(K)))\\
+      & \Adh((\pi_F\circ\pi_\beta^\kappa)(K))\\
     =\\
       & \Adh(\pi_F(K))
   \end{longderivation}
