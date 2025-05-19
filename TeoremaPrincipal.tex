@@ -1,12 +1,11 @@
-\begin{Teo}[Kuratowski-Mrówa]
+\begin{Def}[Kuratowski-Mrówa]
   Un espacio topológico $X$ es compacto si y solo si
   para todo espacio topológico $Y$, la segunda proyección
   $\pi_2:X\times Y\longrightarrow Y$ es cerrada.
-\end{Teo}
+\end{Def}
 
-Antes de demostrar el teorema se presentan un par de lemas los cuales
-permiten entender mejor la relación de este enunciado con la definición
-usual de compacidad.
+Antes de demostrar la equivalencia con la definición usual, se presenta
+un lema el cual facilita entender este enunciado y la demostración.
 
 \begin{Lema}
   Sean $X,Y$, espacios topológicos y $f:X\longrightarrow Y$.
@@ -29,7 +28,7 @@ usual de compacidad.
   \end{enumerate}
 \end{Demo}
 
-\begin{Lema}(Lema del Tubo)
+\begin{Lema}[Lema del Tubo]
   Sean $X,Y$ espacios topológicos, $y\in Y$ y $W\subseteq X\times Y$ abierto tal que
   $X\times\{y\}\subseteq W$. Si $X$ es compacto entonces existe una vecindad $V$ de $y$ tal
   que $X\times V\subseteq W$.
@@ -49,12 +48,32 @@ Aplicando el primer lema, el enunciado el teorema presentado resulta equivalente
 al siguiente
 
 \begin{Teo}[Kuratowski-Mrówa modificado]
-  Un espacio topológico $X$ es compacto si y solo si
+  Un espacio topológico $X$ es compacto (en el sentido de las cubiertas abiertas) si y solo si
   para todo espacio topológico $Y$, se satisface lo siguiente: para todo $y\in Y$,
   $W\subseteq X\times Y$ abierto tal que $X\times\{y\}\subseteq W$, existe una vecindad
   $V$ de $y$ la cual cumple que $X\times V\subseteq U$.
 \end{Teo}
 \begin{Demo}
   La primera implicación es el lema del tubo.
-\end{Demo}
 
+  Supóngase que X que satisface la propiedad y
+  sea $(C_i)_{i\in I}$ una colección de conjuntos 
+  cerrados de $X$ la cual satisface la propiedad de las intersecciones 
+  finitas (esto es que cualquier intersección finita 
+  de los $C_i$ es no vacía). Para demostrar que $X$ es 
+  compacto, basta con demostrar que $\bigcap_{i\in I}C_i\neq \varnothing$
+  
+  Se considera $\infty\notin X$ y se define $Y=X\cup\{\infty\}$
+  con la topología generada por la subbase la cual consiste
+  de $\mathcal{P}(X)$ y los conjuntos de la forma $C_i\cup\{\infty\}$.
+  Sean $A = \{(x,x):x\in X\} \subseteq X\times Y$ y
+  $K = \Adh(A)$. Por hipótesis, la proyección $\pi_2(K)$
+  es cerrada en $Y$ y contiene a $X$. Entonces 
+  $\infty \in \pi_2(K)$ ya que la propiedad de intersección finita de 
+  la colección $(C_i)_{i\in I}$ garantiza que $\{\infty\}$ no sea un 
+  conjunto abierto de $Y$ con lo que existe $x\in X$ tal que $(x,\infty)\in K$. 
+  Esto es, para todo
+  $i\in I$ y $U$ vecindad de $x$, $(U\times(C_i\cup\{\infty\}))\cap\Delta\neq\varnothing$,
+  lo que implica que $U\cap C_i\neq\varnothing$ pues $x$ debe estar en ambos.
+  Pero esto es $x\in\bigcap_{i\in I}C_i$.
+\end{Demo}
