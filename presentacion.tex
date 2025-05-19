@@ -1,0 +1,165 @@
+\documentclass[10pt]{beamer}
+
+\usepackage[arrows]{logicDG}
+\usepackage{analysis}
+\usepackage{nicefrac}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage{mathrsfs}
+\usepackage{thmtools}
+\usepackage{marvosym}
+\usepackage{letltxmacro}
+\usepackage{biblatex}
+\addbibresource{Referencias.bib}
+\usepackage{csquotes}
+\usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2}}
+\makeatother
+\renewcommand{\epsilon}{\upvarepsilon}
+
+\title{La Caracterización de Kuratowski-Mrówa Para Conjuntos Compactos}
+\author[David G., Laura R.]{David Gómez, Laura Rincón}
+\date[26/05/2025]{26 de Mayo de 2025}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+  \section{La Caracterización de Kuratowski-Mrówa}
+  \begin{frame}{La Caracterización de Kuratowski-Mrówa}
+      \begin{definition}
+      Un espacio topológico $X$ es compacto si y solo si para todo espacio
+      espacio topológico $Y$, la segunda proyección $\pi_2: X\times Y \longrightarrow Y$
+      es cerrada 
+    \end{definition}
+  \end{frame}
+  \begin{frame}{Definición usual}
+    \begin{theorem}
+      Un espacio $X$ es compacto si toda cubierta abierta de $X$
+      tiene una subcubierta finita
+    \end{theorem}
+  \end{frame}
+
+  \begin{frame}{Lemas preliminares}
+    \begin{lemma}
+        Sean $X,Y$, espacios topológicos y $f:X\longrightarrow Y$.
+        $f$ es cerrada si y solo si, para todo $y\in Y$ y todo $U\subseteq X$ abierto
+        tal que $f^{-1}(\{y\})\subseteq U$, existe una vecindad $V$ de $y$
+        tal que $f^{-1}(V)\subseteq U$.
+      \end{lemma}
+      \begin{definition}
+      Un espacio topológico $X$ es compacto si y solo si para todo espacio
+      espacio topológico $Y$, la segunda proyección $\pi_2: X\times Y \longrightarrow Y$
+      es cerrada 
+    \end{definition}
+    \begin{theorem}[Kuratowski-Mrówa modificado]
+  Un espacio topológico $X$ es compacto si y solo si
+  dado un espacio $Y$, se satisface lo siguiente: para todo $y\in Y$ y
+  $U\subseteq X\times Y$ abierto tal que $X\times \{y\}\subseteq U$, existe una vecindad
+  $V$ de $y$ la cual cumple que $X \times V\subseteq U$.
+\end{theorem}
+\end{frame}
+\begin{frame}{Demostración} 
+      \begin{lemma}{Lema del tubo}
+      Sean $X,Y$ espacios topológicos, $y\in Y$ y $W\subseteq X\times Y$ abierto tal que
+  $X\times\{y\}\subseteq W$. Si $X$ es compacto entonces existe una vecindad $V$ de $y$ tal
+  que $X\times V\subseteq W$.
+      \end{lemma}
+  \end{frame}
+  \section{Algunos teoremas}
+\begin{frame}{Algunos teoremas}
+  
+    \begin{theorem}
+  Si $X$ es un espacio compacto y $K\subseteq X$ es cerrado,
+  entonces $K$ es compacto.
+\end{theorem}
+Sea $Y$ un espacio topológico. Por hipótesis la segunda proyección
+  $\pi_2:X\times Y\longrightarrow Y$  es cerrada. Como $K$ es cerrado,
+  entonces todo cerrado de $K$ es cerrado en $X$ y $\pi_2\mid_{K\times Y}$
+  es también cerrada.
+\end{frame}
+\begin{frame}
+  \begin{theorem}
+  Sean $X$ un espacio de Hausdorff y $K\subseteq X$. Si $K$ es compacto,
+  entonces es cerrado.
+\end{theorem}
+Como $X$ es Hausdorff, entonces $\Delta=\set{(x,x)}{x\in X}$ es cerrado en $X\times X$
+  con lo que $\Delta_K=\Delta\cap(K\times X)$ es cerrado en $K\times X$. Por la compacidad
+  de $K$, se tiene que en particular $\pi_2:K\times X\longrightarrow X$ es cerrada, luego
+  $K=\pi_2(\Delta_K)$ es cerrado en $X$.
+\end{frame}
+\begin{frame}
+  \begin{theorem}
+  Sean $X,Y$ espacios topológicos y $f:X\longrightarrow Y$ una función continua.
+  Si $X$ es compacto entonces $f(X)$ es compacto en $Y$.
+\end{theorem}
+
+
+  Sea $Z$ un espacio topológico. Por hipótesis, la segunda proyección
+  $p_2:X\times Z\longrightarrow Z$ es cerrada. Sean $\pi_2:f(X)\times Z\longrightarrow Z$
+  la segunda proyección y $C\subseteq f(X)\times Z$ cerrado. El conjunto
+  $A=\set{(x,z)\in X\times Z}{(f(x),z)\in C}$ es cerrado en $X\times Z$ pues,
+  denotando por $I:Z\longrightarrow Z$ la función $z\longmapsto z$,
+  $A$ es la imagen inversa de $C$ mediante la función $(x,z)\longmapsto(f(x),I(z))$ la cual
+  es continua. Como $p_2(A)=\pi_2(C)$ se concluye que $p_2$ es cerrada y en consecuencia,
+  $f(X)$ es compacto.
+\end{frame}
+\begin{frame}
+  \begin{theorem}
+  Sea $X$ un conjunto totalmente ordenado con la propiedad del supremo. Si $X$
+  es dotado de la topología del orden, entonces todo intervalo cerrado de $X$
+  es compacto.
+\end{theorem}
+
+\end{frame}
+  \section{Teorema de Tychonoff}
+\begin{frame}{Tychonoff Caso finito}
+  \onslide<1->{
+  \begin{theorem}
+  Sean $X_1,X_2$ espacios topológicos y $X=X_1\times X_2$. $X_1,X_2$
+  son compactos si y solo si $X$ es compacto.
+\end{theorem}
+Supóngase que $X_1,X_2$ son compactos y sea $Y$ un espacio topológico.
+  Por hipótesis, las segundas proyecciones $p_2:X_1\times(X_2\times Y)\longrightarrow(X_2\times Y)$
+  y $q_2:X\times Y\longrightarrow Y$ son cerradas. Como $(X_1\times X_2)\times Y$
+  es homeomorfo a $X_1\times(X_2\times Y)$ mediante la función
+  $((x_1,x_2),y)\longmapsto(x_1,(x_2,y))$, entonces todo cerrado $C\subseteq(X_1\times X_2)\times Y$
+  tiene un único cerrado asociado 
+  $C^*=\set{(x_1,(x_2,y))}{((x_1,x_2),y)\in C}\subseteq X_1\times(X_2\times Y)$. 
+  Por hipótesis, $p_2(C^*)$ es cerrado y enconsecuencia $q_2(p_2(C^*))$ es cerrado
+  en $Z$. Nótese que la segunda proyección
+  $\pi_2:(X_1\times X_2)\times Y\longrightarrow Y$ $q_2\circ p_2$ satisface que
+  $\pi_2(C)=(q_2\circ p_2)(C^*)$. Así, $X$ es compacto.
+  }
+\end{frame}
+\begin{frame}{Tychonoff Caso general}
+\only<1>{\begin{theorem}
+  Sea $\{X_\alpha\}_{\alpha<\kappa}$ una colección de espacios compactos
+  ordenados por un ordinal $\kappa$. El espacio $\prod_{\alpha<\kappa}X_\alpha$
+  es compacto bajo la topología producto.
+ \end{theorem}} 
+ \only<2>{
+  Sea $Y$ un espacio topológico.
+  Para $\gamma<\kappa$ se define $X^\gamma=\left(\prod_{\alpha<\gamma}X_\alpha\right)\times Y$
+  y se toma la convención de que $X^0=Y$. Para $\beta<\gamma<\kappa$,
+  se considera $\pi_\beta^\gamma:X^\gamma\longrightarrow X^\beta$ definida por
+  \[\pi_\beta^\gamma((x_\alpha)_{\alpha<\gamma},y)=((x_\alpha)_{\alpha<\beta},y)\]
+
+  Sea $K\subseteq X^\kappa$ cerrado. Para $\beta<\kappa$ se denota
+  $K_\beta=\Adh(\pi_\beta^\gamma(K))$. $K=K_\kappa$ y basta con demostrar que
+  $K_0=\pi_0^\kappa(K)$
+ }
+\end{frame}
+\end{document}
