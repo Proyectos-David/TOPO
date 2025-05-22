@@ -1,3 +1,15 @@
+\begin{Def}
+  Una colección $\{(X_\alpha,f_{\alpha,\beta}):\Lambda\}$ es llamada
+  \emph{sistema inverso} cuando cada $X_\alpha$ es un espacio topológico, $\Lambda$
+  es dirigido por una relación $<$, para todo $\alpha<\beta$, las funciones
+  $f_{\alpha,\beta}$ están definidas, son continuas, $f_{\beta,\alpha}\colon X_\alpha\longrightarrow X_\beta$
+  y si $\alpha<\gamma<\beta$ entonces $f_{\gamma,\alpha}\circ f_{\beta,\gamma}=f_{\beta,\alpha}$.
+
+  El límite inverso de este sistema es el subespacio de $\prod_{\alpha\in\Lambda}X_\alpha$ tal que
+  para todo $(x_\alpha)_{\alpha\in\Lambda}$ en el límite y $\beta>\gamma$,
+  \[f_{\beta,\gamma}((x_\alpha)_{\alpha\leq\beta})=(x_\alpha)_{\alpha\leq\gamma}\]
+\end{Def}
+
 \begin{Lema}
   Sean $\{X_\alpha\}_{\alpha\in J}$ una colección de espacios topológicos, $X=\prod_{\alpha\in J}X_\alpha$,
   $(x_\alpha)_{\alpha\in J}\in X$ y $A\subseteq X$. $(x_\alpha)_{\alpha\in J}\in\Adh(A)$ si y solo si

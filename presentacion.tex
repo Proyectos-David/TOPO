@@ -73,7 +73,7 @@
 \end{frame}
 \begin{frame}{Demostración} 
 \only<1>{
-  \begin{lemma}{Lema del tubo}
+  \begin{lemma}[Lema del tubo]
     Sean $X,Y$ espacios topológicos, $y\in Y$ y $W\subseteq X\times Y$ abierto tal que
     $X\times\{y\}\subseteq W$. Si $X$ es compacto entonces existe una vecindad $V$ de $y$ tal
     que $X\times V\subseteq W$.
@@ -86,10 +86,10 @@ Se considera $Y=X\cup\{\infty\}$ con $\infty\notin X$. $Y$ es dotado
 con la topología generada por la subbase la cual consiste de $\mathcal{P}(X)$
 y todos los conjuntos de la forma $C_i\cup\{\infty\}$.
 En $X\times Y$, se consideran $\Delta=\set{(x,x)}{x\in X}$ y $K=\Adh(\Delta)$. Por
-hipótesis, $\pi_2(K)$ es cerrado en $Y$ y $X\subseteq\pi_2(K)$ ya que $X\times X\subseteq\Delta$.
+hipótesis, $\pi_2(K)$ es cerrado en $Y$ y $X\subseteq\pi_2(K)$.
 $\infty\in \pi_2(K)$, debido a la propiedad de intersecciones finitas, ya que esta
-implica que $\{\infty\}$ no es abierto en $Y$, luego toda vecindad de $\infty$.
-Debido a esto, existe $x\in X$ tal que $(x,\infty)\in K$. Esto es, para todo
+implica que $\{\infty\}$ no es abierto en $Y$ y toda vecindad $(C_i\cup \{\infty\})\times U$
+de $(x,\infty)$ interseca con $\Delta$. Esto es, para todo
 $i\in I$ y $U$ vecindad de $x$, $(U\times(C_i\cup\{\infty\}))\cap\Delta\neq\varnothing$,
 lo que implica que $U\cap C_i\neq\varnothing$ pues $x$ debe estar en ambos.
 Pero esto es $x\in\bigcap_{i\in I}C_i$.
@@ -136,10 +136,21 @@ Como $X$ es Hausdorff, entonces $\Delta=\set{(x,x)}{x\in X}$ es cerrado en $X\ti
 \begin{frame}
   \begin{theorem}
   Sea $X$ un conjunto totalmente ordenado con la propiedad del supremo. Si $X$
-  es dotado de la topología del orden, entonces todo intervalo cerrado de $X$
+  es dotado con la topología del orden, entonces todo intervalo cerrado de $X$
   es compacto.
 \end{theorem}
-
+  Denotando $\mathcal{V}(y)$ el conjunto de vecindades de $y$.
+  Sea $C\subseteq[a,b]\times Y$ cerrado y $y\in\Adh(\pi_2(C))$. Para $W\in\mathcal{V}(y)$,
+  se define $A_W=\set{x\in[a,b]}{\Exists{w}[w\in W]{x\times w\in C}}$,
+  $a_W=\sup A_W$ y $\alpha=\inf\set{a_W}{W\in\mathcal{V}(y)}$
+  Sean $V\cap [a,b]$ una vecindad de $\alpha$ en $[a,b]$ con $\alpha \neq \sup(V)$
+  y $W$ una vecindad de $y$. Como $\alpha \neq \sup(V)$ entonces existe $W_1 \in \mathcal{V}(y)$
+  tal que $\alpha \leq a_{W_1} < sup(V)$.
+  
+  Si $\alpha < a_{W_1\cap W}$ entonces $\alpha$ no es una cota superior de $A_{W_1\cap W}$,
+  luego existe $x\in A_{W_1\cap W}$ tal que $\alpha < x \leq a_{W_1\cap W}$. Es claro que 
+  $x \in V$ y que existe $w \in W_1\cap W \subseteq W$ tal que $x\times w \in K$. 
+  Además $x\times w \in (V\times W)\cap K$. 
 \end{frame}
   \section{Teorema de Tychonoff}
 \begin{frame}{Tychonoff Caso finito}
