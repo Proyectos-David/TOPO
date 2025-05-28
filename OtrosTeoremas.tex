@@ -33,8 +33,8 @@
   $f(X)$ es compacto.
 \end{Demo}
 \begin{Teo}
-  Sean $X_1,X_2$ espacios topológicos y $X=X_1\times X_2$. $X_1,X_2$
-  son compactos si y solo si $X$ es compacto.
+  Sean $X_1,X_2$ espacios topológicos y $X=X_1\times X_2$. Si $X_1,X_2$
+  son compactos, entonces $X$ es compacto.
 \end{Teo}
 \begin{Demo}
 \begin{enumerate}
@@ -45,7 +45,7 @@
   $((x_1,x_2),y)\longmapsto(x_1,(x_2,y))$, entonces todo cerrado $C\subseteq(X_1\times X_2)\times Y$
   tiene un único cerrado asociado 
   $C^*=\set{(x_1,(x_2,y))}{((x_1,x_2),y)\in C}\subseteq X_1\times(X_2\times Y)$. 
-  Por hipótesis, $p_2(C^*)$ es cerrado y enconsecuencia $q_2(p_2(C^*))$ es cerrado
+  Por hipótesis, $p_2(C^*)$ es cerrado y en consecuencia $q_2(p_2(C^*))$ es cerrado
   en $Z$. Nótese que la segunda proyección
   $\pi_2:(X_1\times X_2)\times Y\longrightarrow Y$ $q_2\circ p_2$ satisface que
   $\pi_2(C)=(q_2\circ p_2)(C^*)$. Así, $X$ es compacto.
@@ -77,12 +77,12 @@
 
   Sean $V\cap [a,b]$ una vecindad de $\alpha$ en $[a,b]$ con $\alpha \neq \sup(V)$
   y $W$ una vecindad de $y$. Como $\alpha \neq \sup(V)$ entonces existe $W_1 \in \mathcal{V}(y)$
-  tal que $\alpha \leq a_{W_1} < sup(V)$. Nótese que $a_{W_1\cap W}\leq a_{W_1}$ para todo $W$.
+  tal que $\alpha \leq a_{W_1} < \sup(V)$. Nótese que $a_{W_1\cap W}\leq a_{W_1}$ para todo $W$.
 
   Si $\alpha < a_{W_1\cap W}$ entonces $\alpha$ no es una cota superior de $A_{W_1\cap W}$,
   luego existe $x\in A_{W_1\cap W}$ tal que $\alpha < x \leq a_{W_1\cap W}$. Es claro que 
-  $x \in V$ y que existe $w \in W_1\cap W \subseteq W$ tal que $x\times w \in K$. 
-  Además $x\times w \in (V\times W)\cap K$. 
+  $x \in V$ y que existe $w \in W_1\cap W \subseteq W$ tal que $x\times w \in C$. 
+  Además $x\times w \in (V\times W)\cap C$, luego $\alpha\times y\in \adh(C)=C$. 
   Si $\alpha = a_{W_1\cap W}$, entonces para toda vecindad $U$ de $\alpha$ en $X$, 
   $U\cap A_{W_1\cap W} \neq \varnothing$ para todo $W \in \mathcal{V}(y)$. Entonces existen
   $x \in U$ y $w\in W_1\cap W$ tales que $x\times w \in K$ por lo que 
